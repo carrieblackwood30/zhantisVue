@@ -297,7 +297,7 @@ function calcPowerAndLever(){
             alert.value = false
         }, 2000);
 
-    }else if(props.aventos === 'AVENTOS HK-TOP'){
+    }else if(props.aventos === 'AVENTOS HK-top'){
         if(height.value > 600){
             alert('не доступная высота')
         }
@@ -459,6 +459,5 @@ function calcPowerAndLever(){
     width.value = ''
     height.value = ''
 }
-
 
 </script>

@@ -70,12 +70,11 @@
     }
 
     function sendMessage(){
-        console.log(items.value)
-        // axios.post(`https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${chat_id}&text=${
-        //     JSON.stringify(items.value)
-        // }`)
-        // .then((res) => console.log(res))
-        // .catch((err) => console.log(err))
+        axios.post(`https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${chat_id}&text=${
+            JSON.stringify(items.value)
+        }`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
     }
 
 </script>
