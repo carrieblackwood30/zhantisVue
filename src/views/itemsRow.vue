@@ -7,7 +7,7 @@
         </div>
         <div>
             <aventos v-if="chosenItem === `подъемники AVENTOS`" />
-            <petli v-if="chosenItem === `система петель`" />
+            <hinge v-if="chosenItem === `система петель`" />
             <runners v-if="chosenItem === `направляющие`" />
             <boxSystems v-if="chosenItem === `боксовые системы`" />
         </div>
@@ -18,7 +18,7 @@
     import { ref } from 'vue';
 
     import aventos from '@/components/aventos.vue'
-    import petli from '@/components/petli.vue'
+    import hinge from '@/components/hinge.vue'
     import runners from '@/components/runners.vue';
     import boxSystems from '@/components/boxSystems.vue';
     

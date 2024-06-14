@@ -51,7 +51,7 @@ import { ref } from 'vue';
 const items = useStore().aventos
 const sortedItems = ref(null)
 const modelForSearch = ref()
-const itemsCount = JSON.parse(localStorage.getItem('item')) || ''
+const itemsCount = ref(JSON.parse(localStorage.getItem('item')) || '')
 
 
 function searchItems(){

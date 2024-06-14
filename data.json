@@ -45,6 +45,56 @@
                 "img": "https://furnitura7292.kz/wp-content/uploads/2020/02/426-aventos-hk-xs-11-tip-on-odin-rychag_98.jpg",
                 "description": "Для малых корпусов в верхнем шкафу и шкафу-колонке AVENTOS HK-XS открывает неограниченные возможности для дизайна мебели благодаря компактным габаритам силового механизма. Его можно устанавливать в корпусах с небольшой внутренней глубиной. Симметричный силовой механизм можно устанавливать с одной или двух сторон. При установке с двух сторон возможно использование более тяжелых и крупных по размерам фасадов."
             }
+        ],
+        "hinge":[
+            {
+                "id": 1,
+                "name": "петля CLIP top 110",
+                "construction": [
+                    {
+                        "name":["накладная", "полу накладная", "вкладная"],
+                        "img": [
+                            "https://www.komplekttorg.ru/published/publicdata/KOMPLE48SHOP/attachments/SC/products_pictures/73B3550_1_enl.jpg",
+                            "https://phu-gral.eu/userdata/public/gfx/08271afcc8fd4a154ddac1dbe506a9bf.jpg",
+                            "https://line-com.by/image/cache/import_files/bf/bf71ced4c8dd11e590417824af415a75_1d62cb90830711ebb484704d7b84b0e3-700x700.jpg"
+                        ] 
+                    }
+                ],
+                "type": ["BLUMOTION", "без пружинка", "с пружиной"],
+                "img": "https://tdmspb.ru/upload/iblock/b5e/b5e98c57b9678e3737b4d11854d42109.jpg"
+            },
+            {
+                "id": 2,
+                "name": "петля CLIP top 107",
+                "construction": [
+                    {
+                        "name":["накладная", "полу накладная", "вкладная"],
+                        "img": [
+                            "https://www.komplekttorg.ru/published/publicdata/KOMPLE48SHOP/attachments/SC/products_pictures/73B3550_1_enl.jpg",
+                            "https://phu-gral.eu/userdata/public/gfx/08271afcc8fd4a154ddac1dbe506a9bf.jpg",
+                            "https://line-com.by/image/cache/import_files/bf/bf71ced4c8dd11e590417824af415a75_1d62cb90830711ebb484704d7b84b0e3-700x700.jpg"
+                        ] 
+                    }
+                ],
+                "type": ["BLUMOTION", "без пружинка", "с пружиной"],
+                "img": "https://fkmspb.ru/wp-content/uploads/2023/03/75v1550.png"
+            },
+            {
+                "id": 3,
+                "name": "петля CLIP 100",
+                "construction": [
+                    {
+                        "name":["накладная", "полу накладная", "вкладная"],
+                        "img": [
+                            "https://www.komplekttorg.ru/published/publicdata/KOMPLE48SHOP/attachments/SC/products_pictures/73B3550_1_enl.jpg",
+                            "https://phu-gral.eu/userdata/public/gfx/08271afcc8fd4a154ddac1dbe506a9bf.jpg",
+                            "https://line-com.by/image/cache/import_files/bf/bf71ced4c8dd11e590417824af415a75_1d62cb90830711ebb484704d7b84b0e3-700x700.jpg"
+                        ] 
+                    }
+                ],
+                "type": ["без пружинка", "с пружиной"],
+                "img": "https://a.allegroimg.com/original/111f69/acdc66504182b51245723251213e"
+            }
         ]
     }
 ]

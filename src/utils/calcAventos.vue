@@ -1,5 +1,5 @@
 <template>
-    <added v-if="alert" />
+    <added :alert-text="`добавлено в корзину`" v-if="alertCustom" />
     <form class="flex flex-col m-10 w-[400px]" @submit.prevent="calcPowerAndLever()">
         <h3>Высчитать силовик и рычаг</h3>
         <label for="height">Высота фасада:</label>
@@ -69,7 +69,7 @@ const chosenType = ref('BLUMOTION')
 
 console.log(chosenType.value)
 
-const alert = ref(false)
+const alertCustom = ref(false)
 
 const height = ref(null)
 const width = ref(null)
@@ -136,10 +136,10 @@ function calcPowerAndLever(){
 
         localStorage.setItem('item', JSON.stringify(sendToCart.value))
 
-        alert.value = true
+        alertCustom.value = true
 
         setTimeout(() => {
-            alert.value = false
+            alertCustom.value = false
         }, 2000);
 
 
@@ -202,10 +202,10 @@ function calcPowerAndLever(){
 
         localStorage.setItem('item', JSON.stringify(sendToCart.value))
 
-        alert.value = true
+        alertCustom.value = true
 
         setTimeout(() => {
-            alert.value = false
+            alertCustom.value = false
         }, 2000);
 
     } else if(props.aventos === "AVENTOS HL"){
@@ -291,10 +291,10 @@ function calcPowerAndLever(){
 
         localStorage.setItem('item', JSON.stringify(sendToCart.value))
 
-        alert.value = true
+        alertCustom.value = true
 
         setTimeout(() => {
-            alert.value = false
+            alertCustom.value = false
         }, 2000);
 
     }else if(props.aventos === 'AVENTOS HK-top'){
@@ -340,10 +340,10 @@ function calcPowerAndLever(){
 
         localStorage.setItem('item', JSON.stringify(sendToCart.value))
 
-        alert.value = true
+        alertCustom.value = true
 
         setTimeout(() => {
-            alert.value = false
+            alertCustom.value = false
         }, 2000);
 
     } else if(props.aventos === 'AVENTOS HK-S'){
@@ -387,10 +387,10 @@ function calcPowerAndLever(){
 
         localStorage.setItem('item', JSON.stringify(sendToCart.value))
 
-        alert.value = true
+        alertCustom.value = true
 
         setTimeout(() => {
-            alert.value = false
+            alertCustom.value = false
         }, 2000);
 
     }else if(props.aventos === 'AVENTOS HK-XS'){
@@ -449,10 +449,10 @@ function calcPowerAndLever(){
 
         localStorage.setItem('item', JSON.stringify(sendToCart.value))
 
-        alert.value = true
+        alertCustom.value = true
 
         setTimeout(() => {
-            alert.value = false
+            alertCustom.value = false
         }, 2000);
     }
 

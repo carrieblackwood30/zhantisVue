@@ -1,4 +1,5 @@
 <template>
+    <added v-if="alertCustom" :alert-text="`отправлено`" />
     <div class="w-full h-full">
         <div class="flex gap-4 items-center m-auto" v-for="item in items">
         <div class="w-[140px]">
@@ -10,6 +11,7 @@
             <h3 v-if="item.color">цвет: {{ item.color }} </h3>
             <h3 v-if="item.lever">{{ item.lever }}</h3>
             <h3>{{ item.type }}</h3>
+            <h3 v-if="item.chosenConstruction">{{ item.chosenConstruction }}</h3>
         </div>
         <div class="flex gap-3 w-[320px]">
             <h3>количество:</h3>
@@ -31,10 +33,12 @@
     import { useStore } from '@/stores/useStore';
     import { onBeforeMount, ref } from 'vue';
     import axios from 'axios';
+    import added from '@/components/UI/added.vue';
 
     const items = ref(JSON.parse(localStorage.getItem("item")))
     const furnitureList = ref(null)
     const aventosStore = useStore()
+    const alertCustom = ref()
     const telegram_bot_token = "6661322145:AAHUebxQakqaR1ARyIBti_bDqvhJ2VpKXTw"
     const chat_id = "-1002206364591"
 
@@ -70,11 +74,40 @@
     }
 
     function sendMessage(){
+
+        const bodySend = ref([])
+
+        for (let i = 0; i < items.value.length; i++) {
+            bodySend.value.push(
+            `${items.value[i].name} %0A 
+            ${items.value[i].power} %0A 
+            ${items.value[i].lever}  %0A 
+            цвет ${items.value[i].color} %0A 
+            ${items.value[i].count}шт %0A
+            ${items.value[i].type}%0A 
+            ${items.value[i].chosenConstruction}%0A %0A 
+            `)
+        }
+
         axios.post(`https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${chat_id}&text=${
-            JSON.stringify(items.value)
+            bodySend.value
         }`)
         .then((res) => console.log(res))
         .catch((err) => console.log(err))
+
+        alertCustom.value = true
+
+        setTimeout(() => {
+            alertCustom.value = false
+            location.reload()
+        }, 2000);
+
+        localStorage.clear("item")
     }
+
+    
+
+
+
 
 </script>
