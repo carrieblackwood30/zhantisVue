@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/mainContent.vue')
+      component: () => import('@/components/aventos.vue')
     },
     {
       path: '/cart',
@@ -14,10 +14,30 @@ const router = createRouter({
       component: () => import('@/views/cart.vue')
     },
     {
+      path: '/aventos',
+      name: 'aventos',
+      component: () => import("@/components/aventos.vue")
+    },
+    {
+      path: '/hinge',
+      name: 'hinge',
+      component: () => import("@/components/hinge.vue")
+    },
+    {
+      path: '/runnerSystems',
+      component: () => import('@/components/runners.vue')
+    },
+    {
+      path: '/boxSystems',
+      component: () => import('@/components/boxSystems.vue')
+    },
+    {
       path: '/item/:name/',
       component: () => import('@/views/itemDescription.vue')
     }
   ]
 })
+
+
 
 export default router

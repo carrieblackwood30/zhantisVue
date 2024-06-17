@@ -1,7 +1,7 @@
 <template>
     <added v-if="alertCustom" :alert-text="`отправлено`" />
     <div class="w-full h-full">
-        <div class="flex gap-4 items-center m-auto" v-for="item in items">
+        <div class="flex gap-4 items-center m-auto" v-for="item in itemsStore">
         <div class="w-[140px]">
             <img :src="item.img" :alt="item.name" width="100">
             <h3>{{ item.name }}</h3>
@@ -24,7 +24,7 @@
             <img src="@/assets/icons/trash-icon.svg" alt="trash icon" width="50">
         </div>
 
-    </div>
+        </div>
     </div>
     <button @click="sendMessage()">отправить</button>
 </template>
@@ -35,7 +35,7 @@
     import axios from 'axios';
     import added from '@/components/UI/added.vue';
 
-    const items = ref(JSON.parse(localStorage.getItem("item")))
+    const itemsStore = useStore().pickedFurniture
     const furnitureList = ref(null)
     const aventosStore = useStore()
     const alertCustom = ref()
@@ -48,45 +48,55 @@
     })
 
     function increaseDecreaseBtn(itemCart, calc){
-        const findItem = items.value.find(item => itemCart === item)
+        const findItem = itemsStore.find(item => itemCart === item)
 
         if(calc === -1){
             if(findItem.count > 1){
                 findItem.count--
             }else{
-                items.value.splice(findItem, 1)
+                delItem(findItem)
             }
         }else if(calc === +1){
             findItem.count++
         }
 
-        localStorage.setItem("item", JSON.stringify(items.value))
+        localStorage.setItem("item", JSON.stringify(itemsStore))
     }
 
     function delItem(itemCart){
-        const deletingItem = items.value.find(item => item === itemCart)
+        const deletingItem = itemsStore.find(item => itemCart === item)
 
-        if(deletingItem){
-            items.value.splice(deletingItem, 1)
+        if(itemsStore.length > 1){
+            itemsStore.splice(itemsStore.indexOf(deletingItem), 1)
         }
 
-        localStorage.setItem("item", JSON.stringify(items.value))
+        localStorage.setItem("item", JSON.stringify(itemsStore))
     }
 
     function sendMessage(){
 
         const bodySend = ref([])
 
-        for (let i = 0; i < items.value.length; i++) {
+        for (let i = 0; i < itemsStore.length; i++) {
             bodySend.value.push(
-            `${items.value[i].name} %0A 
-            ${items.value[i].power} %0A 
-            ${items.value[i].lever}  %0A 
-            цвет ${items.value[i].color} %0A 
-            ${items.value[i].count}шт %0A
-            ${items.value[i].type}%0A 
-            ${items.value[i].chosenConstruction}%0A %0A 
+            `${itemsStore[i].name} %0A
+            ${itemsStore[i].count}шт %0A
             `)
+            if(itemsStore[i].power){
+                bodySend.value.push(`${itemsStore[i].power} %0A`)
+            }
+            if(itemsStore[i].lever){
+                bodySend.value.push(`${itemsStore[i].lever} %0A `)
+            }
+            if(itemsStore[i].type){
+                bodySend.value.push(`${itemsStore[i].type}%0A`)
+            }
+            if(itemsStore[i].chosenConstruction){
+                bodySend.value.push(`${itemsStore[i].chosenConstruction} %0A %0A`)
+            }
+            if(itemsStore[i].color){
+                bodySend.value.push(`цвет ${itemsStore[i].color} %0A %0A `)
+            }
         }
 
         axios.post(`https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${chat_id}&text=${

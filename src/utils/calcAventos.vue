@@ -56,6 +56,7 @@
 <script setup>
 import { ref } from 'vue';
 import added from "@/components/UI/added.vue"
+import { useStore } from '@/stores/useStore';
 
 const props = defineProps({
     aventos: String,
@@ -75,7 +76,7 @@ const height = ref(null)
 const width = ref(null)
 const sendToCart = ref()
 const thickness = ref(16)
-sendToCart.value = JSON.parse(localStorage.getItem('item')) || []
+sendToCart.value = useStore().pickedFurniture
 
 function calcPowerAndLever(){
 
@@ -128,7 +129,6 @@ function calcPowerAndLever(){
 
         const existingItem = sendToCart.value.find(item => (item.name === result.value.name) && (item.power === result.value.power) && (item.lever === result.value.lever) && (item.color === result.value.color))
         if(existingItem){
-            console.log(existingItem.count)
             existingItem.count++
         }else{
             sendToCart.value.push(result.value)
@@ -455,6 +455,7 @@ function calcPowerAndLever(){
             alertCustom.value = false
         }, 2000);
     }
+
 
     width.value = ''
     height.value = ''

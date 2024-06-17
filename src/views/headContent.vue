@@ -20,19 +20,17 @@
             </div>
         </div>
 
-
-
             <div class="flex items-center gap-4">
-            <div>
-                <p>пн - пт: с 8.00 до 17.00</p>
-                <img src="../assets/icons/phone.svg" alt="phone" width="20" class="inline">
-                <a href="https://api.whatsapp.com/send?phone=77078029059">+7-707-802-90-59</a>
-            </div>
+                <div>
+                    <p>пн - пт: с 8.00 до 17.00</p>
+                    <img src="../assets/icons/phone.svg" alt="phone" width="20" class="inline">
+                    <a href="https://api.whatsapp.com/send?phone=77078029059">+7-707-802-90-59</a>
+                </div>
                 <RouterLink to="/cart">
                     <div class="relative">
                         <img src="@/assets/icons/shopping-cart.svg" alt="shopping cart" width="40">
                         <div class="">
-                            <p class="absolute top-4 w-4 text-center bg-green-500 rounded-full">{{  itemsCount.length }}</p>
+                            <p class="absolute top-4 w-4 text-center bg-green-500 rounded-full">{{  getFurnitureLength() }}</p>
                         </div>
                     </div>
                 </RouterLink>
@@ -51,8 +49,8 @@ import { ref } from 'vue';
 const items = useStore().aventos
 const sortedItems = ref(null)
 const modelForSearch = ref()
-const itemsCount = ref(JSON.parse(localStorage.getItem('item')) || '')
 
+const getFurnitureLength = () => useStore().pickedFurniture?.null || useStore().pickedFurniture.length
 
 function searchItems(){
     sortedItems.value = items[0].filter(item => item.name === modelForSearch.value)

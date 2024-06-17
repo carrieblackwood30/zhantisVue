@@ -1,28 +1,41 @@
 <template>
     <div class="mx-10 flex gap-4">
-        <div class="flex flex-col gap-3 w-[200px]">
+        <div class="flex flex-col gap-3 w-[200px]" v-if="route.path !== '/cart' " >
             <div v-for="item in items" :key="item" class="cursor-pointer">
-                <h3 @click="chosenItem = item; console.log(chosenItem)">{{ item }}</h3>
+                <RouterLink :to="`/${item.path}`">
+                    <h3 @click="chosenItem = item; console.log(chosenItem)">{{ item.name }}</h3>
+                </RouterLink>
             </div>
         </div>
         <div>
-            <aventos v-if="chosenItem === `подъемники AVENTOS`" />
-            <hinge v-if="chosenItem === `система петель`" />
-            <runners v-if="chosenItem === `направляющие`" />
-            <boxSystems v-if="chosenItem === `боксовые системы`" />
+            <RouterView />
         </div>
     </div>
 </template>
 
 <script setup>
     import { ref } from 'vue';
-
-    import aventos from '@/components/aventos.vue'
-    import hinge from '@/components/hinge.vue'
-    import runners from '@/components/runners.vue';
-    import boxSystems from '@/components/boxSystems.vue';
+    import { useRoute } from 'vue-router';
     
-    const items = ['подъемники AVENTOS', 'система петель', 'направляющие', 'боксовые системы']
+    const items = [
+        {
+            name: "подъемники AVENTOS",
+            path: "aventos"
+        },
+        {
+            name: "система петель",
+            path: "hinge"
+        },
+        {
+            name: "направляющие",
+            path: "runnerSystems"
+        },
+        {
+            name: "боксовые системы",
+            path: "boxSystems"
+        }
+    ]
     const chosenItem = ref('подъемники AVENTOS' )
+    const route = useRoute()
 
 </script>

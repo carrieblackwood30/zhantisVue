@@ -45,13 +45,14 @@
 </template>
 
 <script setup>
+import { useStore } from '@/stores/useStore';
 import { ref } from 'vue';
 
     const chosenType = ref("без пружинка")
     const chosenConstruction = ref("накладная")
     const hingeCount = ref(1)
     const sendToCart = ref()
-    sendToCart.value = JSON.parse(localStorage.getItem('item')) || []
+    sendToCart.value = useStore().pickedFurniture
 
     const props = defineProps({
         chosenHinge: Object,

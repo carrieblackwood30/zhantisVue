@@ -1,10 +1,13 @@
 <template>
     <div class="flex gap-4 flex-wrap">
-        <div v-for="hinge in hingeList[0]" class="border" v-if="hingeList[0]">
+        <div v-if="hingeList[0]" v-for="hinge in hingeList[0]" class="border">
             <button @click="openHingeModal(hinge)">
                 <h3>{{ hinge.name }}</h3> 
                 <img :src="hinge.img" :alt="hinge.name" width="200">
             </button>
+        </div>
+        <div v-else>
+            loading...
         </div>
     </div>
     <hingeModule :chosen-hinge="chosenHinge" :is-modal-open="isModalOpen">
@@ -23,6 +26,7 @@
     const isModalOpen = ref(false)
 
     onBeforeMount(() =>{
+        useStore().getFurnitures()
         hingeList.value = hingeStore.hinge
     })
 
